@@ -2,7 +2,7 @@
 
 ################################################################################
 # Source https://mailinabox.email/ https://github.com/mail-in-a-box/mailinabox #
-# Updated by Dirty Harry for YiiMP use...                                      #
+# Updated by IdMineThat for YiiMP use...                                      #
 # This script is intended to be ran from the Yiimp Server Installer            #
 ################################################################################
 
@@ -11,12 +11,12 @@ cd ~/yiimpserver/install
 clear
 
 # Welcome
-message_box "Dirty Harry Yiimp Server Installer v1.0" \
-"Hello and thanks for using the Dirty Harry Yiimp Server Installer v1.0!
+message_box "IdMineThat Yiimp Server Installer v1.0" \
+"Hello and thanks for using the IdMineThat Yiimp Server Installer v1.0!
 \n\nInstallation for the most part is fully automated. In most cases any user responses that are needed are asked prior to the installation.
 \n\nNOTE: You should only install this on a brand new Ubuntu 16.04 or Ubuntu 18.04 installation."
 # Root warning message box
-message_box "Dirty Harry Yiimp Server Installer v1.0" \
+message_box "IdMineThat Yiimp Server Installer v1.0" \
 "Naughty, Naughty! You are trying to install this as the root user!
 \n\nRunning any application as root is a serious security risk.
 \n\nTherefore we make you create a user account :)"
