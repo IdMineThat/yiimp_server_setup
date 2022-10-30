@@ -9,8 +9,8 @@ source /etc/functions.sh
 RESULT=$(dialog --stdout --nocancel --default-item 1 --title "IdMineThat Yiimp Server Installer v1.0" --menu "Choose one" -1 60 16 \
 ' ' "- YiiMP Server Install -" \
 1 "YiiMP Single Server" \
-' ' "- More Will Be Added Later -" \
-2 Exit)
+2 "Yiimp Multi Server" \
+3 Exit)
 if [ $RESULT = ]
 then
 bash $(basename $0) && exit;
@@ -24,6 +24,13 @@ source bootstrap_single.sh;
 fi
 
 if [ $RESULT = 2 ]
+then
+clear;
+cd $HOME/yiimpserver/install
+source bootstrap_multi.sh;
+fi
+
+if [ $RESULT = 3 ]
 then
 clear;
 exit;
