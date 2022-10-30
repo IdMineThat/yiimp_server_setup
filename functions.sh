@@ -1,6 +1,6 @@
 ################################################################################
 # Source https://mailinabox.email/ https://github.com/mail-in-a-box/mailinabox #
-# Updated by Dirty Harry for YiiMP use...                                      #
+# Updated by IdMineThat for YiiMP use...                                      #
 # This script is intended to be ran from the Yiimp Server Installer            #
 ################################################################################
 
