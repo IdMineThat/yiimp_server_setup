@@ -8,23 +8,27 @@ source /etc/functions.sh
 clear
 echo -e " Setting our global variables..."
 
+# !!!!!!!!!!!
+# Commenting All of this out as if you are installing this on a local pool, it doesn't work the way you'll want it to.
+# If you don't know the IP of where you want to install this, you probably shouldn't be doing this anyways.
+
 # If the machine is behind a NAT, inside a VM, etc., it may not know
 # its IP address on the public network / the Internet. Ask the Internet
 # and possibly confirm with user.
-if [ -z "${PUBLIC_IP:-}" ]; then
+#if [ -z "${PUBLIC_IP:-}" ]; then
 # Ask the Internet.
-GUESSED_IP=$(get_publicip_from_web_service 4)
+#GUESSED_IP=$(get_publicip_from_web_service 4)
 
 # On the first run, if we got an answer from the Internet then don't
 # ask the user.
-if [[ -z "${DEFAULT_PUBLIC_IP:-}" && ! -z "$GUESSED_IP" ]]; then
-PUBLIC_IP=$GUESSED_IP
+#if [[ -z "${DEFAULT_PUBLIC_IP:-}" && ! -z "$GUESSED_IP" ]]; then
+#PUBLIC_IP=$GUESSED_IP
 
 # On later runs, if the previous value matches the guessed value then
 # don't ask the user either.
-elif [ "${DEFAULT_PUBLIC_IP:-}" == "$GUESSED_IP" ]; then
-PUBLIC_IP=$GUESSED_IP
-fi
+#elif [ "${DEFAULT_PUBLIC_IP:-}" == "$GUESSED_IP" ]; then
+#PUBLIC_IP=$GUESSED_IP
+#fi
 
 if [ -z "${PUBLIC_IP:-}" ]; then
 input_box "Public IP Address" \
@@ -44,18 +48,19 @@ fi
 # doesn't have an IPv6, don't ask for one.
 if [ -z "${PUBLIC_IPV6:-}" ]; then
 	# Ask the Internet.
-	GUESSED_IP=$(get_publicip_from_web_service 6)
-	MATCHED=0
-	if [[ -z "${DEFAULT_PUBLIC_IPV6:-}" && ! -z "$GUESSED_IP" ]]; then
-		PUBLIC_IPV6=$GUESSED_IP
-	elif [[ "${DEFAULT_PUBLIC_IPV6:-}" == "$GUESSED_IP" ]]; then
-		# No IPv6 entered and machine seems to have none, or what
-		# the user entered matches what the Internet tells us.
-		PUBLIC_IPV6=$GUESSED_IP
-		MATCHED=1
-	elif [[ -z "${DEFAULT_PUBLIC_IPV6:-}" ]]; then
-		DEFAULT_PUBLIC_IP=$(get_default_privateip 6)
-	fi
+	## Anything that I commented out has 2 ##
+	##GUESSED_IP=$(get_publicip_from_web_service 6)
+	##MATCHED=0
+	##if [[ -z "${DEFAULT_PUBLIC_IPV6:-}" && ! -z "$GUESSED_IP" ]]; then
+	##	PUBLIC_IPV6=$GUESSED_IP
+	##elif [[ "${DEFAULT_PUBLIC_IPV6:-}" == "$GUESSED_IP" ]]; then
+	##	# No IPv6 entered and machine seems to have none, or what
+	##	# the user entered matches what the Internet tells us.
+	##	PUBLIC_IPV6=$GUESSED_IP
+	##	MATCHED=1
+	##elif [[ -z "${DEFAULT_PUBLIC_IPV6:-}" ]]; then
+	##	DEFAULT_PUBLIC_IP=$(get_default_privateip 6)
+	##fi
 
 	if [[ -z "${PUBLIC_IPV6:-}" && $MATCHED == 0 ]]; then
 		input_box "IPv6 Address (Optional)" \
